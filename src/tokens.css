@@ -1,0 +1,90 @@
+/* ─────────────────────────────────────────────
+   tokens.css — Design tokens: colors, spacing,
+   typography scale, radius, shadows, fonts
+   ───────────────────────────────────────────── */
+
+:root, [data-theme="dark"] {
+  --color-bg:               #0f0f0e;
+  --color-surface:          #161615;
+  --color-surface-2:        #1c1c1a;
+  --color-surface-offset:   #222220;
+  --color-border:           #2e2e2b;
+  --color-divider:          #252523;
+  --color-text:             #dddbd6;
+  --color-text-muted:       #868480;
+  --color-text-faint:       #4e4d4a;
+  --color-primary:          #4fa8b8;
+  --color-primary-hover:    #3890a0;
+  --color-primary-active:   #2a7585;
+  --color-primary-highlight:#162e34;
+  --color-error:            #c05878;
+  --color-success:          #5f9e3e;
+  --color-gold:             #c9a84c;
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.3);
+  --shadow-md: 0 4px 14px oklch(0 0 0 / 0.45);
+  --shadow-lg: 0 12px 36px oklch(0 0 0 / 0.6);
+  --radius-sm:   0.25rem;
+  --radius-md:   0.4rem;
+  --radius-lg:   0.6rem;
+  --radius-xl:   0.875rem;
+  --radius-full: 9999px;
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --text-xs:   0.72rem;
+  --text-sm:   0.825rem;
+  --text-base: 0.9rem;
+  --text-lg:   1.05rem;
+  --font-body:    'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Calibri', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'Consolas', 'Courier New', monospace;
+  --transition:   160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --color-bg:               #f4f3ef;
+  --color-surface:          #f9f8f5;
+  --color-surface-2:        #ffffff;
+  --color-surface-offset:   #eeeae6;
+  --color-border:           #d0cec8;
+  --color-divider:          #dedad4;
+  --color-text:             #1c1c1a;
+  --color-text-muted:       #666460;
+  --color-text-faint:       #a09e9a;
+  --color-primary:          #1a7080;
+  --color-primary-hover:    #145c6a;
+  --color-primary-active:   #0e4a55;
+  --color-primary-highlight:#cde8ed;
+  --color-error:            #a03050;
+  --color-gold:             #9a7020;
+  --shadow-sm: 0 1px 3px oklch(0.2 0.01 80 / 0.07);
+  --shadow-md: 0 4px 14px oklch(0.2 0.01 80 / 0.1);
+  --shadow-lg: 0 12px 36px oklch(0.2 0.01 80 / 0.14);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-bg:               #f4f3ef;
+    --color-surface:          #f9f8f5;
+    --color-surface-2:        #ffffff;
+    --color-surface-offset:   #eeeae6;
+    --color-border:           #d0cec8;
+    --color-divider:          #dedad4;
+    --color-text:             #1c1c1a;
+    --color-text-muted:       #666460;
+    --color-text-faint:       #a09e9a;
+    --color-primary:          #1a7080;
+    --color-primary-hover:    #145c6a;
+    --color-primary-active:   #0e4a55;
+    --color-primary-highlight:#cde8ed;
+    --color-error:            #a03050;
+    --color-gold:             #9a7020;
+    --shadow-sm: 0 1px 3px oklch(0.2 0.01 80 / 0.07);
+    --shadow-md: 0 4px 14px oklch(0.2 0.01 80 / 0.1);
+    --shadow-lg: 0 12px 36px oklch(0.2 0.01 80 / 0.14);
+  }
+}
