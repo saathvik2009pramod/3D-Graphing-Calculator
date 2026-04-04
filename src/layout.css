@@ -1,0 +1,209 @@
+/* ─────────────────────────────────────────────
+   layout.css — App shell, sidebar, canvas area
+   ───────────────────────────────────────────── */
+
+#app {
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+  width: 300px;
+  min-width: 300px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+
+#sidebar-header {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.logo-name span { color: var(--color-primary); }
+
+#sidebar-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+#sidebar-scroll::-webkit-scrollbar { width: 3px; }
+#sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+#sidebar-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-divider);
+  margin: 0 calc(-1 * var(--space-4));
+}
+
+/* ── Canvas area ── */
+#canvas-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#canvas-wrap canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── Canvas overlays ── */
+#canvas-controls {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+#axes-labels {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+#info-panel {
+  position: absolute;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  box-shadow: var(--shadow-md);
+  max-width: 190px;
+  line-height: 1.7;
+}
+#info-panel strong {
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+/* ── Analysis panel (printed near graph) ── */
+#analysis-panel {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  max-width: 290px;
+  display: none;
+  line-height: 1.8;
+  pointer-events: none;
+}
+#analysis-panel.visible {
+  display: block;
+}
+#analysis-panel .analysis-title {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+  padding-bottom: var(--space-1);
+  font-family: var(--font-mono);
+  word-break: break-all;
+}
+#analysis-panel .analysis-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+#analysis-panel .analysis-label {
+  color: var(--color-text-muted);
+}
+#analysis-panel .analysis-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text);
+}
+
+/* ── Mobile ── */
+#mobile-toggle {
+  display: none;
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 50;
+  width: 38px;
+  height: 38px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  #mobile-toggle { display: flex; }
+
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+  }
+  #sidebar.open { transform: translateX(0); }
+
+  #canvas-wrap { width: 100%; }
+}
