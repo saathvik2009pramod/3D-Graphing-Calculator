@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initThree();
   initControls();
   initUI();
+  initSculptUI();
 
   // Default graph on load
   addGraph('sin(x) * cos(y)');
